@@ -15,11 +15,12 @@ export const AddCard = () => {
   const history = useHistory();
 
   useEffect(() => {
-    const abortController = new AbortController();
-    if(deckId){
-    readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
-    return () => abortController.abort();
-    }
+    readDeck(deckId).then(setDeck).catch(setError);
+    // const abortController = new AbortController();
+    // if(deckId){
+    // readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+    // return () => abortController.abort();
+    // }
   }, [deckId]);
 
   const changeHandler = (event) => {
