@@ -4,6 +4,7 @@ import {
   useParams,
   useHistory,
   NavLink,
+  Link
 } from "react-router-dom";
 import { deleteCard, readDeck } from "../utils/api";
 import NavBar from "./NavBar";
@@ -36,16 +37,16 @@ export const Deck = () => {
   };
 
   const cardList = deck.cards.map((card, index) => (
-    <div className="border p-4 h-100 d-flex flex-column align-self-stretch">
-      <div className="name" key={index}>
-        <div className="item-left">
+    <div className="border p-4 h-100 d-flex flex-column align-self-stretch" key={index}>
+      <div className="name" key={index} >
+        <div className="item-left" >
           <p>{card.front}</p>
         </div>
-        <div className="item-right">
+        <div className="item-right" >
           <p>{card.back}</p>
         </div>
       </div>
-      <div className="item-right">
+      <div className="item-right" >
         <NavLink to={`${url}/cards/${card.id}/edit`}>
           <button type="button">Edit</button>
         </NavLink>
@@ -69,9 +70,11 @@ export const Deck = () => {
           <h2>{deck.name}</h2>
           <p>{deck.description}</p>
           <div className="deckActions">
-            <button type="button" onClick={() => history.push(`${url}/edit`)}>
+            <Link to={`${url}/edit`}>
+            <button type="button" className="btn btn-primary mr-5" >
               Edit
             </button>
+            </Link>
 
             <button type="button" onClick={() => history.push(`${url}/study`)}>
               Study

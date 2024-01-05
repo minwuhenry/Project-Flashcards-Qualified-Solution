@@ -89,6 +89,18 @@
       "back": "add back",
       "deckId": 1,
       "id": 13
+    },
+    {
+      "front": "new card again",
+      "back": "new card back",
+      "deckId": 1,
+      "id": 14
+    },
+    {
+      "front": "new card front ",
+      "back": "new card back",
+      "deckId": 1,
+      "id": 15
     }
   ]
 }

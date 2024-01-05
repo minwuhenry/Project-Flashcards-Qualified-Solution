@@ -33,8 +33,8 @@ export const DeckList = () => {
     return <p style={{ color: "red" }}>ERROR: {error.message}</p>;
   } else {
     const list = decks.map((deck) => (
-      <div className="container">
-        <div className="name" key={deck.id}>
+      <div className="container" key={deck.id}>
+        <div className="name" >
           <div className="item-left">
             <h2>{deck.name}</h2>
           </div>
@@ -43,7 +43,7 @@ export const DeckList = () => {
           </div>
         </div>
         <p>{deck.description}</p>
-        <div className="deckActions">
+        <div className="deckActions" >
           <button
             type="button"
             onClick={() => history.push(`/decks/${deck.id}`)}

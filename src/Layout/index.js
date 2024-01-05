@@ -10,6 +10,7 @@ import EditCard from "../card/EditCard";
 import Study from "../study/Study"
 import EditDeck from "../deck/EditDeck";
 import AddCard from "../card/AddCard";
+import DeckNav from "../deck/DeckNav";
 
 function Layout() {
   return (
@@ -36,12 +37,15 @@ function Layout() {
           <Route path="/decks/:deckId/study">
             <Study />
           </Route>
-          <Route path="/decks/:deckId/edit">
+          <Route exact={true} path="/decks/:deckId">
+            <DeckNav />
+          </Route>
+          {/* <Route path="/decks/:deckId/edit">
             <EditDeck />
-          </Route>
-          <Route path="/decks/:deckId">
+          </Route> */}
+          {/*<Route path="/decks/:deckId">
             <Deck />
-          </Route>
+          </Route> */}
           <Route>
             <NotFound />
           </Route>

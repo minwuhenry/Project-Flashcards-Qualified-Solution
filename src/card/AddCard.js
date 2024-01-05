@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import NavBar from "../deck/NavBar";
 import { readDeck, createCard } from "../utils/api";
 
@@ -14,8 +14,13 @@ export const AddCard = () => {
   const [error, setError] = useState(undefined);
   const history = useHistory();
 
+  const getDeck = async () => {
+    const data = await readDeck(deckId);
+    setDeck(data);
+  };
   useEffect(() => {
-    readDeck(deckId).then(setDeck).catch(setError);
+    getDeck();
+    // readDeck(deckId).then((response) => setDeck(response)).catch(setError);
     // const abortController = new AbortController();
     // if(deckId){
     // readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
@@ -46,10 +51,19 @@ export const AddCard = () => {
   if (deck.name) {
     return (
       <section className="container">
-        <NavBar text="Add Card" />
-        
+        <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+            </li>
+            <li className="breadcrumb-item active">Add Card</li>
+          </ol>
+        </nav>
+        <h2>{`${deck.name}: Add Card`}</h2>
         <form name="addCard" onSubmit={handleSubmit}>
-        <h2>{deck.name}: Add Card</h2>
           <div>
             <label htmlFor="front">Front</label>
           </div>
