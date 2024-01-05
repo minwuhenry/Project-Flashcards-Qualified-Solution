@@ -157,7 +157,9 @@ describe("Decks", () => {
       </Router>
     );
 
+    console.log("response: ", await screen.findAllByText("Add Card"));
     const deckNameElements = await screen.findAllByText("Mock squash");
+    
     expect(deckNameElements.length).toBeGreaterThanOrEqual(1);
 
     const titleElements = await screen.findAllByText("Add Card");

@@ -1,38 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import NavBar from "../deck/NavBar";
-import { readDeck, createCard } from "../utils/api";
+import { readDeck, updateDeck } from "../utils/api";
 
-export const AddCard = () => {
+export const EditDeck = () => {
   const { deckId } = useParams();
-  const initialState = {
-    front: "",
-    back: "",
-  };
   const [deck, setDeck] = useState({});
-  const [formData, setFormData] = useState({ ...initialState });
   const [error, setError] = useState(undefined);
   const history = useHistory();
 
   useEffect(() => {
     const abortController = new AbortController();
-    if(deckId){
     readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
     return () => abortController.abort();
-    }
   }, [deckId]);
 
   const changeHandler = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setDeck({ ...deck, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const abortController = new AbortController();
-    createCard(deckId, formData, abortController.signal)
-      .then((response) => {
-        setFormData(initialState);
-      })
+    updateDeck(deck, abortController.signal)
+      .then((response) => { 
+        history.push(`/decks/${deckId}`)})
       .catch((error) => {
         if (error.name === "AbortError") {
           console.log("Fetch aborted");
@@ -42,35 +34,36 @@ export const AddCard = () => {
       });
   };
 
-  if (deck.name) {
+  if (error) {
+    return <p style={{ color: "red" }}>ERROR: {error.message}</p>;
+  } else {
     return (
       <section className="container">
-        <NavBar text="Add Card" />
-        
-        <form name="addCard" onSubmit={handleSubmit}>
-        <h2>{deck.name}: Add Card</h2>
+        <NavBar text={`${deck.name} / Edit Deck`} />
+        <h2>Edit Deck</h2>
+        <form name="editDeck" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="front">Front</label>
+            <label htmlFor="name">Name</label>
           </div>
           <div>
-            <textarea
-              id="front"
+            <input
+              id="name"
               type="text"
-              name="front"
+              name="name"
               onChange={changeHandler}
-              value={formData.front}
+              value={deck.name}
             />
           </div>
           <br />
           <div>
-            <label htmlFor="back">Back</label>
+            <label htmlFor="description">Description</label>
           </div>
           <div>
             <textarea
-              id="back"
-              name="back"
+              id="description"
+              name="description"
               onChange={changeHandler}
-              value={formData.back}
+              value={deck.description}
             />
           </div>
           <br />
@@ -78,14 +71,12 @@ export const AddCard = () => {
             type="button"
             onClick={() => history.push(`/decks/${deckId}`)}
           >
-            Done
+            Cancel
           </button>
-          <button type="submit">Save</button>
+          <button type="submit">Submit</button>
         </form>
       </section>
     );
-  } else {
-    return null;
   }
 };
-export default AddCard;
+export default EditDeck;
