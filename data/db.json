@@ -1,0 +1,124 @@
+{
+  "decks": [
+    {
+      "id": 1,
+      "name": "Rendering in React",
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
+    },
+    {
+      "name": "React Router",
+      "description": "React Router is a collection of navigational components that compose declaratively with your application.",
+      "id": 2
+    },
+    {
+      "name": "new deck two",
+      "description": "this is to verify if create deck api returns a deck",
+      "id": 4
+    },
+    {
+      "name": "new deck 5",
+      "description": "description for deck 5",
+      "id": 7
+    },
+    {
+      "name": "new deck 6",
+      "description": "description for deck 6. Yeap",
+      "id": 8
+    },
+    {
+      "name": "new deck 7",
+      "description": "descriptions for deck 7. very good.",
+      "id": 9
+    },
+    {
+      "name": "new deck 8",
+      "description": "descriptions for deck 8 after deleting deck 4",
+      "id": 10
+    },
+    {
+      "name": "new deck 9",
+      "description": "description for deck 9",
+      "id": 11
+    },
+    {
+      "name": "new deck 11",
+      "description": "description for deck 11",
+      "id": 12
+    },
+    {
+      "name": "new deck 12",
+      "description": "description for deck 12",
+      "id": 13
+    },
+    {
+      "name": "new deck 13",
+      "description": "descriptions for deck 13",
+      "id": 14
+    },
+    {
+      "name": "new deck 14",
+      "description": "descriptions for deck 14, yes",
+      "id": 15
+    },
+    {
+      "name": "new deck 15",
+      "description": "descriptions for deck 15",
+      "id": 16
+    },
+    {
+      "name": "new deck 16",
+      "description": "descriptions for deck 16",
+      "id": 17
+    },
+    {
+      "name": "new deck 17",
+      "description": "descriptions for deck 17",
+      "id": 18
+    },
+    {
+      "name": "new deck 18",
+      "description": "descriptions for deck 18",
+      "id": 19
+    },
+    {
+      "name": "new deck 19",
+      "description": "descriptions for deck 19",
+      "id": 20
+    },
+    {
+      "name": "new deck 20",
+      "description": "descriptions for deck 20",
+      "id": 21
+    },
+    {
+      "name": "dew deck 21",
+      "description": "descriptions for deck 21",
+      "id": 22
+    },
+    {
+      "name": "new deck 22",
+      "description": "description for deck 22",
+      "id": 23
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "front": "Edit Front",
+      "back": "Edit Back",
+      "deckId": 1
+    },
+    {
+      "front": "update front",
+      "back": "All paths. A route with no path matches all URL's",
+      "deckId": 2,
+      "id": 4
+    },
+    {
+      "front": "Update One, What does <Switch> do?",
+      "back": "Renders the first matching child <Route> ",
+      "deckId": 2,
+      "id": 5
+    }
+  ]
+}

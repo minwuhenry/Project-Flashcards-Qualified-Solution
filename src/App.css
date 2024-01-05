@@ -1,0 +1,18 @@
+.name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deckActions{
+    display: flex
+}
+.item-left {
+    align-self: flex-start;
+}
+.item-right {
+    align-self: flex-end;
+}
+
+ul {
+    list-style-type: none;
+}
