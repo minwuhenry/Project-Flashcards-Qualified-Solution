@@ -45,12 +45,20 @@ export const DeckList = () => {
         <p>{deck.description}</p>
         <div className="deckActions" >
           <button
-            type="button"
+            type="button" className="btn btn-secondary mx-1"
             onClick={() => history.push(`/decks/${deck.id}`)}
           >
             View
           </button>
-          <button type="button" onClick={() => handleDelete(deck.id)}>
+          <button
+              type="button"
+              className="btn btn-primary mx-1"
+              onClick={() => history.push(`/decks/${deck.id}/study`)}
+            >
+              Study
+            </button>
+          <button type="button" className="btn btn-danger mx-1"
+          onClick={() => handleDelete(deck.id)}>
             Delete
           </button>
         </div>
@@ -60,7 +68,9 @@ export const DeckList = () => {
     return (
       <div className="container">
          <NavLink to="/decks/new">
-            <button type="button">Create Deck</button>
+            <button type="button" className="btn btn-secondary my-3">
+              Create Deck
+            </button>
         </NavLink>
         <section className="row">{list}</section>
       </div>

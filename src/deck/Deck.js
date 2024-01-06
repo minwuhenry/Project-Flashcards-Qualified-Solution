@@ -4,9 +4,9 @@ import {
   useParams,
   useHistory,
   NavLink,
-  Link
+  Link,
 } from "react-router-dom";
-import { deleteCard, readDeck } from "../utils/api";
+import { deleteCard, readDeck, deleteDeck } from "../utils/api";
 import NavBar from "./NavBar";
 
 export const Deck = () => {
@@ -25,7 +25,7 @@ export const Deck = () => {
     fetchDeck();
   }, [deckId]);
 
-  const handleDelete = async (id) => {
+  const handleCardDelete = async (id) => {
     const abortController = new AbortController();
     const result = window.confirm(
       "Delete this card?\nYou will not be able to recover it."
@@ -36,21 +36,41 @@ export const Deck = () => {
     }
   };
 
+  const handleDeckDelete = async () => {
+    const abortController = new AbortController();
+    const result = window.confirm(
+      "Delete this deck?\nYou will not be able to recover it."
+    );
+    if (result) {
+      await deleteDeck(deckId, abortController.signal);
+      history.push("/");
+    }
+  };
+
   const cardList = deck.cards.map((card, index) => (
-    <div className="border p-4 h-100 d-flex flex-column align-self-stretch" key={index}>
-      <div className="name" key={index} >
-        <div className="item-left" >
+    <div
+      className="border p-4 h-100 d-flex flex-column align-self-stretch"
+      key={index}
+    >
+      <div className="name" key={index}>
+        <div className="item-left">
           <p>{card.front}</p>
         </div>
-        <div className="item-right" >
+        <div className="item-right">
           <p>{card.back}</p>
         </div>
       </div>
-      <div className="item-right" >
+      <div className="item-right">
         <NavLink to={`${url}/cards/${card.id}/edit`}>
-          <button type="button">Edit</button>
+          <button type="button" className="btn btn-secondary mx-1">
+            Edit
+          </button>
         </NavLink>
-        <button type="button" onClick={() => handleDelete(card.id)}>
+        <button
+          type="button"
+          className="btn btn-danger mx-1"
+          onClick={() => handleCardDelete(card.id)}
+        >
           Delete
         </button>
       </div>
@@ -71,17 +91,30 @@ export const Deck = () => {
           <p>{deck.description}</p>
           <div className="deckActions">
             <Link to={`${url}/edit`}>
-            <button type="button" className="btn btn-primary mr-5" >
-              Edit
-            </button>
+              <button type="button" className="btn btn-secondary mx-1">
+                Edit
+              </button>
             </Link>
-
-            <button type="button" onClick={() => history.push(`${url}/study`)}>
+            <button
+              type="button"
+              className="btn btn-primary mx-1"
+              onClick={() => history.push(`${url}/study`)}
+            >
               Study
             </button>
-
-            <button type="button" onClick={() => history.push(`${url}/cards/new`)}>
+            <button
+              type="button"
+              className="btn btn-primary mx-1"
+              onClick={() => history.push(`${url}/cards/new`)}
+            >
               Add Cards
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger mx-1"
+              onClick={() => handleDeckDelete()}
+            >
+              Delete
             </button>
           </div>
           <br />
