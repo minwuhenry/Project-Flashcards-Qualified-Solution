@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import FlipCards from "./FlipCards";
-import NavBarNew from "../Layout/NavBarNew";
+import NavBar from "../Layout/NavBar";
 
 export const Study = () => {
   const { deckId } = useParams();
@@ -28,7 +28,7 @@ export const Study = () => {
     return (
       <section className="container">
         {console.log("deck", {deck})}
-        <NavBarNew deck={deck} />
+        <NavBar deck={deck} />
         <div className="border p-4 h-100 d-flex flex-column align-self-stretch">
           <h1>Study: {deck.name}</h1>
           {cards && cards.length > 2 ? (

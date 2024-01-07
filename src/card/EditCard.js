@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import NavBarNew from "../Layout/NavBarNew";
+import NavBar from "../Layout/NavBar";
 import { readDeck, readCard, updateCard } from "../utils/api";
 
 export const EditCard = () => {
@@ -47,7 +47,7 @@ export const EditCard = () => {
   } else {
     return (
       <section className="container">
-        <NavBarNew deck={deck} />
+        <NavBar deck={deck} />
         <h1>Edit Card</h1>
         <form name="editCard" onSubmit={handleSubmit}>
           <div>

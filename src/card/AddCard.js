@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
-import NavBarNew from "../Layout/NavBarNew";
+import { useParams, useHistory } from "react-router-dom";
+import NavBar from "../Layout/NavBar";
 import { readDeck, createCard } from "../utils/api";
 
 export const AddCard = () => {
@@ -16,9 +16,9 @@ export const AddCard = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    if(deckId){
-    readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
-    return () => abortController.abort();
+    if (deckId) {
+      readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+      return () => abortController.abort();
     }
   }, [deckId]);
 
@@ -45,7 +45,7 @@ export const AddCard = () => {
   if (deck.name) {
     return (
       <section className="container">
-        <NavBarNew deck={deck} />
+        <NavBar deck={deck} />
         <h1>{`${deck.name}: Add Card`}</h1>
         <form name="addCard" onSubmit={handleSubmit}>
           <div>
@@ -80,7 +80,9 @@ export const AddCard = () => {
           >
             Done
           </button>
-          <button type="submit" className="btn btn-primary mx-1">Save</button>
+          <button type="submit" className="btn btn-primary mx-1">
+            Save
+          </button>
         </form>
       </section>
     );
