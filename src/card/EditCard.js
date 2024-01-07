@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import NavBar from "../deck/NavBar";
+import NavBar from "../Layout/NavBar";
 import { readDeck, readCard, updateCard } from "../utils/api";
 
 export const EditCard = () => {

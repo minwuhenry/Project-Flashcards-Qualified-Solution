@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 function FlipCards({ cards = [] }) {
   const [flipped, setFlipped] = useState(false);
   const [index, setIndex] = useState(0);
-  const handleFlip = () => {};
   const cardCount = cards.length;
   const history = useHistory();
 

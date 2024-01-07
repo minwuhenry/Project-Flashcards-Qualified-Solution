@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createDeck } from "../utils/api";
-import NavBar from "./NavBar";
+import NavBar from "../Layout/NavBar";
 
 export const CreateDeckForm = () => {
   const history = useHistory();

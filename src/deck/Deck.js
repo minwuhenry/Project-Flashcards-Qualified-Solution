@@ -7,7 +7,7 @@ import {
   Link,
 } from "react-router-dom";
 import { deleteCard, readDeck, deleteDeck } from "../utils/api";
-import NavBar from "./NavBar";
+import NavBar from "../Layout/NavBar";
 
 export const Deck = () => {
   const [deck, setDeck] = useState({ cards: [] });

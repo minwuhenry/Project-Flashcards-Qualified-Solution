@@ -96,6 +96,12 @@
       "back": "new card back",
       "deckId": 1,
       "id": 15
+    },
+    {
+      "front": "new card front jan 6",
+      "back": "new card back jan 6",
+      "deckId": 2,
+      "id": 16
     }
   ]
 }
