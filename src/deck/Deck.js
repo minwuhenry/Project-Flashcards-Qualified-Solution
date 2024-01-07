@@ -87,7 +87,7 @@ export const Deck = () => {
           className="border p-4 h-100 d-flex flex-column align-self-stretch"
           key={deck.id}
         >
-          <h2>{deck.name}</h2>
+          <h1>{deck.name}</h1>
           <p>{deck.description}</p>
           <div className="deckActions">
             <Link to={`${url}/edit`}>

@@ -38,7 +38,7 @@ export const CreateDeckForm = () => {
   return (
     <section className="container">
       <NavBar text="Create Deck" />
-      <h2>Create Deck</h2>
+      <h1>Create Deck</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name</label>
@@ -65,10 +65,10 @@ export const CreateDeckForm = () => {
           />
         </div>
         <br />
-        <button type="button" onClick={() => history.push("/")}>
+        <button type="button" className="btn btn-secondary mx-1" onClick={() => history.push("/")}>
           Cancel
         </button>
-        <button type="submit">Submit</button>
+        <button type="submit" className="btn btn-primary mx-1">Submit</button>
       </form>
     </section>
   );

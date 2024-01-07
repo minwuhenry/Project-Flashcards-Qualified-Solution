@@ -62,7 +62,7 @@ export const AddCard = () => {
             <li className="breadcrumb-item active">Add Card</li>
           </ol>
         </nav>
-        <h2>{`${deck.name}: Add Card`}</h2>
+        <h1>{`${deck.name}: Add Card`}</h1>
         <form name="addCard" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="front">Front</label>
@@ -91,11 +91,12 @@ export const AddCard = () => {
           <br />
           <button
             type="button"
+            className="btn btn-secondary mx-1"
             onClick={() => history.push(`/decks/${deckId}`)}
           >
             Done
           </button>
-          <button type="submit">Save</button>
+          <button type="submit" className="btn btn-primary mx-1">Save</button>
         </form>
       </section>
     );

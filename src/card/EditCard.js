@@ -48,7 +48,7 @@ export const EditCard = () => {
     return (
       <section className="container">
         <NavBar text={`${deck.name} / Edit Card ${card.id}`} />
-        <h2>Edit Card</h2>
+        <h1>Edit Card</h1>
         <form name="editCard" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="front">Front</label>
@@ -77,11 +77,12 @@ export const EditCard = () => {
           <br />
           <button
             type="button"
+            className="btn btn-secondary mx-1"
             onClick={() => history.push(`/decks/${deckId}`)}
           >
             Cancel
           </button>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn btn-primary mx-1">Submit</button>
         </form>
       </section>
     );
