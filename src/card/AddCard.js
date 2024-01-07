@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import NavBar from "../Layout/NavBar";
+import NavBarNew from "../Layout/NavBarNew";
 import { readDeck, createCard } from "../utils/api";
 
 export const AddCard = () => {
@@ -14,18 +14,12 @@ export const AddCard = () => {
   const [error, setError] = useState(undefined);
   const history = useHistory();
 
-  const getDeck = async () => {
-    const data = await readDeck(deckId);
-    setDeck(data);
-  };
   useEffect(() => {
-    getDeck();
-    // readDeck(deckId).then((response) => setDeck(response)).catch(setError);
-    // const abortController = new AbortController();
-    // if(deckId){
-    // readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
-    // return () => abortController.abort();
-    // }
+    const abortController = new AbortController();
+    if(deckId){
+    readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+    return () => abortController.abort();
+    }
   }, [deckId]);
 
   const changeHandler = (event) => {
@@ -51,17 +45,7 @@ export const AddCard = () => {
   if (deck.name) {
     return (
       <section className="container">
-        <nav>
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="breadcrumb-item">
-              <Link to={`/decks/${deckId}`}>{deck.name}</Link>
-            </li>
-            <li className="breadcrumb-item active">Add Card</li>
-          </ol>
-        </nav>
+        <NavBarNew deck={deck} />
         <h1>{`${deck.name}: Add Card`}</h1>
         <form name="addCard" onSubmit={handleSubmit}>
           <div>

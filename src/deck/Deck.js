@@ -7,7 +7,7 @@ import {
   Link,
 } from "react-router-dom";
 import { deleteCard, readDeck, deleteDeck } from "../utils/api";
-import NavBar from "../Layout/NavBar";
+import NavBarNew from "../Layout/NavBarNew";
 
 export const Deck = () => {
   const [deck, setDeck] = useState({ cards: [] });
@@ -82,7 +82,7 @@ export const Deck = () => {
   } else {
     return (
       <section className="container">
-        <NavBar text={deck.name} />
+        <NavBarNew deck={deck} />
         <div
           className="border p-4 h-100 d-flex flex-column align-self-stretch"
           key={deck.id}

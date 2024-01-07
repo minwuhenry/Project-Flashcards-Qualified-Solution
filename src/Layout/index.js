@@ -4,9 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "../home/DeckList";
-import Deck from "../deck/Deck";
 import CreateDeckForm from "../deck/CreateDeckForm";
-import EditCard from "../card/EditCard";
 import Study from "../study/Study"
 import DeckNav from "../deck/DeckNav";
 

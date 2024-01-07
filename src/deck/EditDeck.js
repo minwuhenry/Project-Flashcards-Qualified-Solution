@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import NavBar from "../Layout/NavBar";
+import NavBarNew from "../Layout/NavBarNew";
 import { readDeck, updateDeck } from "../utils/api";
 
 export const EditDeck = () => {
@@ -39,7 +39,7 @@ export const EditDeck = () => {
   } else {
     return (
       <section className="container">
-        <NavBar text={`${deck.name} / Edit Deck`} />
+        <NavBarNew deck={deck} />
         <h1>Edit Deck</h1>
         <form name="editDeck" onSubmit={handleSubmit}>
           <div>

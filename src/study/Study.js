@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import FlipCards from "./FlipCards";
+import NavBarNew from "../Layout/NavBarNew";
 
 export const Study = () => {
   const { deckId } = useParams();
@@ -22,20 +23,12 @@ export const Study = () => {
       return () => abortController.abort();
     }
   }, [deckId]);
+
   if (deck.name) {
     return (
       <section className="container">
-        <nav>
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="breadcrumb-item">
-              <Link to={`/decks/${deckId}`}>{deck.name}</Link>
-            </li>
-            <li className="breadcrumb-item active">Study</li>
-          </ol>
-        </nav>
+        {console.log("deck", {deck})}
+        <NavBarNew deck={deck} />
         <div className="border p-4 h-100 d-flex flex-column align-self-stretch">
           <h1>Study: {deck.name}</h1>
           {cards && cards.length > 2 ? (

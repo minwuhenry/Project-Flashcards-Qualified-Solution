@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createDeck } from "../utils/api";
-import NavBar from "../Layout/NavBar";
+import NavBarNew from "../Layout/NavBarNew";
 
 export const CreateDeckForm = () => {
   const history = useHistory();
@@ -37,7 +37,7 @@ export const CreateDeckForm = () => {
 
   return (
     <section className="container">
-      <NavBar text="Create Deck" />
+      <NavBarNew  />
       <h1>Create Deck</h1>
       <form onSubmit={handleSubmit}>
         <div>
