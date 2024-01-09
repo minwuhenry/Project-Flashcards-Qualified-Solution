@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import NavBar from "../Layout/NavBar";
 import { readDeck, readCard, updateCard } from "../utils/api";
+import CardForm from "./CardForm";
 
 export const EditCard = () => {
   const { deckId, cardId } = useParams();
@@ -13,14 +14,14 @@ export const EditCard = () => {
   useEffect(() => {
     const abortController = new AbortController();
     readDeck(deckId, abortController.signal)
-    .then(setDeck)
-    .catch((error) => {
-      if (error.name === "AbortError") {
-        console.log("Fetch aborted");
-      } else {
-        console.error("An error occurred:", error);
-      }
-    });
+      .then(setDeck)
+      .catch((error) => {
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          console.error("An error occurred:", error);
+        }
+      });
     return () => abortController.abort();
   }, [deckId]);
 
@@ -34,13 +35,17 @@ export const EditCard = () => {
     setCard({ ...card, [event.target.name]: event.target.value });
   };
 
+  const handleCancel = () => {
+    history.push(`/decks/${deckId}`);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const abortController = new AbortController();
     updateCard(card, abortController.signal)
-      .then((response) => { 
-        console.log("response: ", response);
-        history.push(`/decks/${deckId}`)})
+      .then((response) => {
+        history.push(`/decks/${deckId}`);
+      })
       .catch((error) => {
         if (error.name === "AbortError") {
           console.log("Fetch aborted");
@@ -57,41 +62,12 @@ export const EditCard = () => {
       <section className="container">
         <NavBar deck={deck} />
         <h1>Edit Card</h1>
-        <form name="editCard" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="front">Front</label>
-          </div>
-          <div>
-            <textarea
-              id="front"
-              type="text"
-              name="front"
-              onChange={changeHandler}
-              value={card.front}
-            />
-          </div>
-          <br />
-          <div>
-            <label htmlFor="back">Back</label>
-          </div>
-          <div>
-            <textarea
-              id="back"
-              name="back"
-              onChange={changeHandler}
-              value={card.back}
-            />
-          </div>
-          <br />
-          <button
-            type="button"
-            className="btn btn-secondary mx-1"
-            onClick={() => history.push(`/decks/${deckId}`)}
-          >
-            Cancel
-          </button>
-          <button type="submit" className="btn btn-primary mx-1">Submit</button>
-        </form>
+        <CardForm
+          card={card}
+          changeHandler={changeHandler}
+          handleCancel={handleCancel}
+          handleSubmit={handleSubmit}
+        />
       </section>
     );
   }

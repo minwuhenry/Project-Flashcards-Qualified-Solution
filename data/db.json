@@ -86,8 +86,8 @@
       "id": 13
     },
     {
-      "front": "new card again",
-      "back": "new card back",
+      "front": "new card front edit",
+      "back": "new card back edit",
       "deckId": 1,
       "id": 14
     },
@@ -102,6 +102,24 @@
       "back": "new card back jan 6",
       "deckId": 2,
       "id": 16
+    },
+    {
+      "front": "new front add using cardform",
+      "back": "new back add using cardform",
+      "deckId": 1,
+      "id": 17
+    },
+    {
+      "front": "new card front using form",
+      "back": "new card back using form",
+      "deckId": 1,
+      "id": 18
+    },
+    {
+      "front": "new card front 4",
+      "back": "new card back 4",
+      "deckId": 2,
+      "id": 19
     }
   ]
 }
