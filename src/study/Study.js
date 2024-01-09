@@ -8,7 +8,6 @@ export const Study = () => {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
-  const [error, setError] = useState(undefined);
   const history = useHistory();
 
   useEffect(() => {
@@ -19,7 +18,13 @@ export const Study = () => {
           setDeck(response);
           setCards(response.cards);
         })
-        .catch(setError);
+        .catch((error) => {
+          if (error.name === "AbortError") {
+            console.log("Fetch aborted");
+          } else {
+            console.error("An error occurred:", error);
+          }
+        });
       return () => abortController.abort();
     }
   }, [deckId]);
@@ -27,7 +32,6 @@ export const Study = () => {
   if (deck.name) {
     return (
       <section className="container">
-        {console.log("deck", {deck})}
         <NavBar deck={deck} />
         <div className="border p-4 h-100 d-flex flex-column align-self-stretch">
           <h1>Study: {deck.name}</h1>

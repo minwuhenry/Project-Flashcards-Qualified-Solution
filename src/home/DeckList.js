@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { listDecks, deleteDeck } from "../utils/api";
+import TrashCanIcon from "../Layout/trash.svg";
 
 export const DeckList = () => {
   const [decks, setDecks] = useState([]);
@@ -34,7 +35,7 @@ export const DeckList = () => {
   } else {
     const list = decks.map((deck) => (
       <div className="container" key={deck.id}>
-        <div className="name" >
+        <div className="name">
           <div className="item-left">
             <h2>{deck.name}</h2>
           </div>
@@ -43,23 +44,27 @@ export const DeckList = () => {
           </div>
         </div>
         <p>{deck.description}</p>
-        <div className="deckActions" >
+        <div className="deckActions">
           <button
-            type="button" className="btn btn-secondary mx-1"
+            type="button"
+            className="btn btn-secondary mx-1"
             onClick={() => history.push(`/decks/${deck.id}`)}
           >
             View
           </button>
           <button
-              type="button"
-              className="btn btn-primary mx-1"
-              onClick={() => history.push(`/decks/${deck.id}/study`)}
-            >
-              Study
-            </button>
-          <button type="button" className="btn btn-danger mx-1"
-          onClick={() => handleDelete(deck.id)}>
-            Delete
+            type="button"
+            className="btn btn-primary mx-1"
+            onClick={() => history.push(`/decks/${deck.id}/study`)}
+          >
+            Study
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger mx-1"
+            onClick={() => handleDelete(deck.id)}
+          >
+            <img src={TrashCanIcon} alt="Delete" />
           </button>
         </div>
       </div>
@@ -67,10 +72,10 @@ export const DeckList = () => {
 
     return (
       <div className="container">
-         <NavLink to="/decks/new">
-            <button type="button" className="btn btn-secondary my-3">
-              Create Deck
-            </button>
+        <NavLink to="/decks/new">
+          <button type="button" className="btn btn-secondary my-3">
+            Create Deck
+          </button>
         </NavLink>
         <section className="row">{list}</section>
       </div>

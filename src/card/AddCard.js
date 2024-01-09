@@ -11,13 +11,20 @@ export const AddCard = () => {
   };
   const [deck, setDeck] = useState({});
   const [formData, setFormData] = useState({ ...initialState });
-  const [error, setError] = useState(undefined);
   const history = useHistory();
 
   useEffect(() => {
     const abortController = new AbortController();
     if (deckId) {
-      readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+      readDeck(deckId, abortController.signal)
+      .then(setDeck)
+      .catch((error) => {
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          console.error("An error occurred:", error);
+        }
+      });
       return () => abortController.abort();
     }
   }, [deckId]);

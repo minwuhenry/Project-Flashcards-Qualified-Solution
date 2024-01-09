@@ -12,7 +12,15 @@ export const EditCard = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+    readDeck(deckId, abortController.signal)
+    .then(setDeck)
+    .catch((error) => {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted");
+      } else {
+        console.error("An error occurred:", error);
+      }
+    });
     return () => abortController.abort();
   }, [deckId]);
 

@@ -6,12 +6,19 @@ import { readDeck, updateDeck } from "../utils/api";
 export const EditDeck = () => {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
-  const [error, setError] = useState(undefined);
   const history = useHistory();
 
   useEffect(() => {
     const abortController = new AbortController();
-    readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+    readDeck(deckId, abortController.signal)
+    .then(setDeck)
+    .catch((error) => {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted");
+      } else {
+        console.error("An error occurred:", error);
+      }
+    });
     return () => abortController.abort();
   }, [deckId]);
 
@@ -34,9 +41,7 @@ export const EditDeck = () => {
       });
   };
 
-  if (error) {
-    return <p style={{ color: "red" }}>ERROR: {error.message}</p>;
-  } else {
+  if (deck.name) {
     return (
       <section className="container">
         <NavBar deck={deck} />
@@ -78,6 +83,8 @@ export const EditDeck = () => {
         </form>
       </section>
     );
+  }else {
+    return <p>Loading ...</p>
   }
 };
 export default EditDeck;

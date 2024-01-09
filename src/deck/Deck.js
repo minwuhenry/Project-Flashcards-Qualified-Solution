@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { deleteCard, readDeck, deleteDeck } from "../utils/api";
 import NavBar from "../Layout/NavBar";
+import TrashCanIcon from "../Layout/trash.svg";
 
 export const Deck = () => {
   const [deck, setDeck] = useState({ cards: [] });
@@ -71,7 +72,7 @@ export const Deck = () => {
           className="btn btn-danger mx-1"
           onClick={() => handleCardDelete(card.id)}
         >
-          Delete
+          <img src={TrashCanIcon} alt="Delete" />
         </button>
       </div>
     </div>
@@ -114,7 +115,7 @@ export const Deck = () => {
               className="btn btn-danger mx-1"
               onClick={() => handleDeckDelete()}
             >
-              Delete
+              <img src={TrashCanIcon} alt="Delete" />
             </button>
           </div>
           <br />
