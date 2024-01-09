@@ -51,7 +51,7 @@ export const EditDeck = () => {
             <label htmlFor="name">Name</label>
           </div>
           <div>
-            <input
+            <input className="form-control form-control-lg"
               id="name"
               type="text"
               name="name"
@@ -64,7 +64,7 @@ export const EditDeck = () => {
             <label htmlFor="description">Description</label>
           </div>
           <div>
-            <textarea
+            <textarea className="form-control form-control-lg"
               id="description"
               name="description"
               onChange={changeHandler}

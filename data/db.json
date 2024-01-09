@@ -9,6 +9,11 @@
       "name": "Update React Router",
       "description": "Updated: React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
+    },
+    {
+      "name": "new deck",
+      "description": "new deck description",
+      "id": 3
     }
   ],
   "cards": [
@@ -120,6 +125,12 @@
       "back": "new card back 4",
       "deckId": 2,
       "id": 19
+    },
+    {
+      "front": "new front",
+      "back": "new back",
+      "deckId": 3,
+      "id": 20
     }
   ]
 }

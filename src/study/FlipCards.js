@@ -29,20 +29,27 @@ function FlipCards({ cards = [] }) {
   };
   if (cardCount > 0) {
     return (
-      <div className="border p-4 h-100 d-flex flex-column align-self-stretch">
-        <h3>
-          card {index + 1} of {cardCount}
-        </h3>
-        <div>
-          {flipped ? <p>{cards[index].back}</p> : <p>{cards[index].front}</p>}
-          <button type="button" onClick={() => setFlipped(!flipped)}>
-            flip
-          </button>
-          {flipped && (
-            <button type="button" onClick={() => handleNext()}>
-              next
-            </button>
+      <div className="card w-75 mb-3">
+        <div className="card-body">
+          <h3 className="card-text">
+            card {index + 1} of {cardCount}
+          </h3>
+
+          {flipped ? (
+            <p className="card-text">{cards[index].back}</p>
+          ) : (
+            <p className="card-text">{cards[index].front}</p>
           )}
+          <div className="row">
+            <button type="button" onClick={() => setFlipped(!flipped)}>
+              flip
+            </button>
+            {flipped && (
+              <button type="button" onClick={() => handleNext()}>
+                next
+              </button>
+            )}
+          </div>
         </div>
       </div>
     );

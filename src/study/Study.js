@@ -33,7 +33,7 @@ export const Study = () => {
     return (
       <section className="container">
         <NavBar deck={deck} />
-        <div className="border p-4 h-100 d-flex flex-column align-self-stretch">
+          <div className="container">
           <h1>Study: {deck.name}</h1>
           {cards && cards.length > 2 ? (
             <FlipCards cards={deck.cards} />

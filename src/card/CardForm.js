@@ -7,7 +7,7 @@ function CardForm(props) {
           <label htmlFor="front">Front</label>
         </div>
         <div>
-          <textarea
+          <textarea className="form-control form-control-lg"
             id="front"
             type="text"
             name="front"
@@ -20,7 +20,7 @@ function CardForm(props) {
           <label htmlFor="back">Back</label>
         </div>
         <div>
-          <textarea
+          <textarea className="form-control form-control-lg"
             id="back"
             name="back"
             onChange={props.changeHandler}
