@@ -35,37 +35,39 @@ export const DeckList = () => {
   } else {
     const list = decks.map((deck) => (
       <div className="container" key={deck.id}>
-        <div className="name">
-          <div className="item-left">
-            <h2>{deck.name}</h2>
+        <div className="card w-75 mb-3">
+          <div className="card-body">
+            <div className="row">
+              <h2 className="card-title col">{deck.name}</h2>
+              <p className="card-text text-right col">
+                {deck.cards.length} cards
+              </p>
+            </div>
+            <p className="card-text">{deck.description}</p>
+            <div className="row">
+              <button
+                type="button"
+                className="btn btn-secondary mx-1"
+                onClick={() => history.push(`/decks/${deck.id}`)}
+              >
+                View
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary mx-1"
+                onClick={() => history.push(`/decks/${deck.id}/study`)}
+              >
+                Study
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger mx-1"
+                onClick={() => handleDelete(deck.id)}
+              >
+                <img src={TrashCanIcon} alt="Delete" />
+              </button>
+            </div>
           </div>
-          <div className="right-left">
-            <p className="item-righ">{deck.cards.length} cards</p>
-          </div>
-        </div>
-        <p>{deck.description}</p>
-        <div className="deckActions">
-          <button
-            type="button"
-            className="btn btn-secondary mx-1"
-            onClick={() => history.push(`/decks/${deck.id}`)}
-          >
-            View
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary mx-1"
-            onClick={() => history.push(`/decks/${deck.id}/study`)}
-          >
-            Study
-          </button>
-          <button
-            type="button"
-            className="btn btn-danger mx-1"
-            onClick={() => handleDelete(deck.id)}
-          >
-            <img src={TrashCanIcon} alt="Delete" />
-          </button>
         </div>
       </div>
     ));
