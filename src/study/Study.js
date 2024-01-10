@@ -33,26 +33,24 @@ export const Study = () => {
     return (
       <section className="container">
         <NavBar deck={deck} />
-          <div className="container">
-          <h1>Study: {deck.name}</h1>
-          {cards && cards.length > 2 ? (
-            <FlipCards cards={deck.cards} />
-          ) : (
-            <div>
-              <h2>Not enough cards</h2>
-              <p>
-                You need at least 3 cards to study. There are{" "}
-                {deck.cards.length} in this deck
-              </p>
-              <button
-                type="button"
-                onClick={() => history.push(`/decks/${deckId}/cards/new`)}
-              >
-                Add Cards
-              </button>
-            </div>
-          )}
-        </div>
+        <h1>Study: {deck.name}</h1>
+        {cards && cards.length > 2 ? (
+          <FlipCards cards={deck.cards} />
+        ) : (
+          <div>
+            <h2>Not enough cards</h2>
+            <p>
+              You need at least 3 cards to study. There are {deck.cards.length}{" "}
+              in this deck
+            </p>
+            <button
+              type="button"
+              onClick={() => history.push(`/decks/${deckId}/cards/new`)}
+            >
+              Add Cards
+            </button>
+          </div>
+        )}
       </section>
     );
   } else {

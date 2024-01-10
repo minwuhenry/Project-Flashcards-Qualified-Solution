@@ -38,6 +38,5 @@ function CardForm(props) {
         <button type="submit" className="btn btn-primary mx-1">Submit</button>
       </form> 
     )
-
 }
 export default CardForm;

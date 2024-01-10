@@ -29,7 +29,7 @@ function FlipCards({ cards = [] }) {
   };
   if (cardCount > 0) {
     return (
-      <div className="card w-75 mb-3">
+      <div className="card w-100 mb-3">
         <div className="card-body">
           <h3 className="card-text">
             card {index + 1} of {cardCount}

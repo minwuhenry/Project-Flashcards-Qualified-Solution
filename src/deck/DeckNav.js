@@ -1,9 +1,10 @@
 import React from "react";
-import { Route,Switch,useRouteMatch } from "react-router-dom";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import Deck from "./Deck";
 import EditDeck from "./EditDeck";
 import AddCard from "../card/AddCard";
 import EditCard from "../card/EditCard";
+import NotFound from "../Layout/NotFound";
 
 function DeckNav() {
   const { path } = useRouteMatch();
@@ -21,6 +22,9 @@ function DeckNav() {
         </Route>
         <Route path={`${path}/edit`}>
           <EditDeck />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </>

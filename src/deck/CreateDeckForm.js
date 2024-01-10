@@ -25,7 +25,6 @@ export const CreateDeckForm = () => {
       .then((response) => {
         history.push(`/decks/${response.id}`);
       })
-
       .catch((error) => {
         if (error.name === "AbortError") {
           console.log("Fetch aborted");

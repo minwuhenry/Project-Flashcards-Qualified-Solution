@@ -49,31 +49,28 @@ export const Deck = () => {
   };
 
   const cardList = deck.cards.map((card, index) => (
-    <div
-      className="border p-4 h-100 d-flex flex-column align-self-stretch"
-      key={index}
-    >
-      <div className="name" key={index}>
-        <div className="item-left">
-          <p>{card.front}</p>
+    <div className="card w-100 mb-3" key={index}>
+      <div className="card-body">
+        <div className="row">
+          <p className="card-title col">{card.front}</p>
+          <p className="card-text text-right col">{card.back}</p>
         </div>
-        <div className="item-right">
-          <p>{card.back}</p>
+        <div className="row">
+          <div className="card-text text-right col">
+            <NavLink to={`${url}/cards/${card.id}/edit`}>
+              <button type="button" className="btn btn-secondary mx-1">
+                Edit
+              </button>
+            </NavLink>
+            <button
+              type="button"
+              className="btn btn-danger mx-1"
+              onClick={() => handleCardDelete(card.id)}
+            >
+              <img src={TrashCanIcon} alt="Delete" />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="item-right">
-        <NavLink to={`${url}/cards/${card.id}/edit`}>
-          <button type="button" className="btn btn-secondary mx-1">
-            Edit
-          </button>
-        </NavLink>
-        <button
-          type="button"
-          className="btn btn-danger mx-1"
-          onClick={() => handleCardDelete(card.id)}
-        >
-          <img src={TrashCanIcon} alt="Delete" />
-        </button>
       </div>
     </div>
   ));
@@ -84,13 +81,11 @@ export const Deck = () => {
     return (
       <section className="container">
         <NavBar deck={deck} />
-        <div
-          className="border p-4 h-100 d-flex flex-column align-self-stretch"
-          key={deck.id}
-        >
-          <h1>{deck.name}</h1>
-          <p>{deck.description}</p>
-          <div className="deckActions">
+
+        <h1>{deck.name}</h1>
+        <p>{deck.description}</p>
+        <div className="row">
+          <div className="card-title col">
             <Link to={`${url}/edit`}>
               <button type="button" className="btn btn-secondary mx-1">
                 Edit
@@ -110,6 +105,8 @@ export const Deck = () => {
             >
               Add Cards
             </button>
+          </div>
+          <div className="card-text text-right col">
             <button
               type="button"
               className="btn btn-danger mx-1"
@@ -118,9 +115,11 @@ export const Deck = () => {
               <img src={TrashCanIcon} alt="Delete" />
             </button>
           </div>
-          <br />
+        </div>
+        <br />
+        <div>
           <h2>Cards</h2>
-          <div>{cardList}</div>
+          {cardList}
         </div>
       </section>
     );

@@ -35,7 +35,7 @@ export const DeckList = () => {
   } else {
     const list = decks.map((deck) => (
       <div className="container" key={deck.id}>
-        <div className="card w-75 mb-3">
+        <div className="card w-100 mb-3">
           <div className="card-body">
             <div className="row">
               <h2 className="card-title col">{deck.name}</h2>
