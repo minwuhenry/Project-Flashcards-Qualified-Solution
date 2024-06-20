@@ -9,7 +9,7 @@ import NotFound from "../Layout/NotFound";
 function DeckNav() {
   const { path } = useRouteMatch();
   return (
-    <>
+    <section>
       <Switch>
         <Route exact path={path}>
           <Deck />
@@ -27,7 +27,7 @@ function DeckNav() {
           <NotFound />
         </Route>
       </Switch>
-    </>
+    </section>
   );
 }
 export default DeckNav;
