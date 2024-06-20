@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   useRouteMatch,
   useParams,
@@ -17,14 +17,15 @@ export const Deck = () => {
   const { url } = useRouteMatch();
   const history = new useHistory();
 
-  const fetchDeck = () => {
-    const abortController = new AbortController();
-    readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
-    return () => abortController.abort();
-  };
-  useEffect(() => {
-    fetchDeck();
-  }, [deckId]);
+  const fetchDeck = useCallback(() => {
+      const abortController = new AbortController();
+      readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
+      return () => abortController.abort();
+    }, [deckId]);
+
+    useEffect(() => {
+      fetchDeck();
+    }, [fetchDeck]);
 
   const handleCardDelete = async (id) => {
     const abortController = new AbortController();
